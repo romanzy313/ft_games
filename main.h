@@ -6,7 +6,7 @@
 //   By: rvolovoy <rvolovoy@student.codam.nl>              +#+                //
 //                                                        +#+                 //
 //   Created: 2026/07/01 23:07:21 by rvolovoy            #+#    #+#           //
-//   Updated: 2026/07/02 00:34:05 by rvolovoy            ########   odam.nl   //
+//   Updated: 2026/07/02 01:01:28 by rvolovoy            ########   odam.nl   //
 //                                                                            //
 // ************************************************************************** //
 
@@ -34,3 +34,11 @@ typedef struct s_comm_tx {
 t_comm_tx	*comm_tx_open(t_comm_tx *tx, char *directory, char *username);
 void	comm_tx_close(t_comm_tx *tx);
 void	comm_tx_send(t_comm_tx *tx, char *data, int size);
+
+typedef struct s_comm {
+	t_comm_rx *rx;
+	t_comm_tx *tx;
+} t_comm;
+
+void	comm_open(t_comm *comm, char *directory, char *my_username, char *peer_username);
+void	comm_close(t_comm *comm);

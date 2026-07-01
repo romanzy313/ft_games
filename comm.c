@@ -6,7 +6,7 @@
 //   By: rvolovoy <rvolovoy@student.codam.nl>              +#+                //
 //                                                        +#+                 //
 //   Created: 2026/07/01 23:03:52 by rvolovoy            #+#    #+#           //
-//   Updated: 2026/07/02 00:36:33 by rvolovoy            ########   odam.nl   //
+//   Updated: 2026/07/02 01:01:37 by rvolovoy            ########   odam.nl   //
 //                                                                            //
 // ************************************************************************** //
 
@@ -84,4 +84,17 @@ void	comm_tx_close(t_comm_tx *tx)
 void	comm_tx_send(t_comm_tx *tx, char *data, int size)
 {
 	write(tx->fd, data, size);
+}
+
+
+void	comm_open(t_comm *comm, char *directory, char *my_username, char *peer_username)
+{
+	comm_tx_open(comm->tx, directory, my_username);
+	comm_rx_open(comm->rx, directory, peer_username);
+}
+
+void	comm_close(t_comm *comm)
+{
+	comm_tx_close(comm->tx);
+	comm_rx_close(comm->rx);
 }
